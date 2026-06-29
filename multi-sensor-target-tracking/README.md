@@ -6,7 +6,14 @@ This workspace contains the implementation scripts, automated testing harness, a
 
 * flight_estimation_ekf.m: The core state estimation engine. It implements an Extended Kalman Filter (EKF) to propagate 3D aircraft dynamics, evaluate non-linear system Jacobians, estimate sensor biases, and isolate data fault anomalies.
 * test_tracking_pipeline.m: The automated test and validation harness. It loads the flight data profiles, profiles execution script runtime, and checks for dimension formatting errors or NaN outputs.
-* Task4_Bias.png: Graphic output illustrating the tracking performance and stability of the accelerometer and gyroscope bias convergence loops under sensor fault configurations.
+* Task4_Bias.png: Graphical validation output tracking the system's performance under extreme sensor fault conditions.
+
+## 📊 Analysis of Task 4 (Sensor Bias & Fault Isolation)
+
+The included Task4_Bias.png image demonstrates the robust tracking capabilities of the 18-state EKF framework when subjected to simultaneous input noise and Angle of Attack (AoA) sensor faults:
+
+* Gyroscope & Accelerometer Drift Tracking: The filter accurately isolates structural sensor biases from true aircraft kinematics, allowing the estimated trajectory to remain stable.
+* Fault Instance Anomaly Detection: By evaluating structural covariance bounds, the system actively identifies measurement anomalies (such as sudden shifts in the AoA data profile) and minimizes their impact on state estimation updates.
 
 ## 🚀 How to Run the Implementation
 
