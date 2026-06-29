@@ -17,17 +17,17 @@ This module implements a Centralized Multi-Sensor Data Fusion Architecture utili
 
 The system tracks the aircraft's 2D position (x, y) and velocities (x_dot, y_dot) using a continuous-discrete state-space model:
 
-x_k = [x_k; x_dot_k; y_k; y_dot_k]
+                           x_k = [x_k; x_dot_k; y_k; y_dot_k]
 
 1. Process Model (Time Update)
 
-x_k = A * x_k-1 + w_k-1
+                               x_k = A * x_k-1 + w_k-1
 
 Where A is the state transition matrix for a sampling time Delta_t, and w_k represents process noise.
 
 2. Measurement Model (Measurement Update)
 
-z_k^i = H^i * x_k + v_k^i
+                             z_k^i = H^i * x_k + v_k^i
 
 Where H maps the true state space to the measurements, and v_k^i represents individual sensor noise.
 
