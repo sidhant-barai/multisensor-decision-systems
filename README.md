@@ -6,41 +6,41 @@ This repository documents advanced implementations of data fusion architectures,
 
 ## 🛠️ Portfolio Modules
 
-### 1. Multi-Sensor Target Tracking via Centralized Kalman Filtering
+### 1. Multi-Sensor Flight State Estimation via Extended Kalman Filtering
 
 ### 📌 Project Overview
-This module implements a Centralized Multi-Sensor Data Fusion Architecture utilizing a linear Kalman Filter to track a maneuvering aircraft moving in a two-dimensional plane. By integrating tracking data from multiple independent sensors, the system minimizes state estimation uncertainty and mitigates measurement noise.
+This module implements an Advanced Centralized Multi-Sensor Data Fusion Architecture utilizing an Extended Kalman Filter (EKF) to estimate the full 3D kinematic state and sensor biases of an aircraft. By processing parallel measurement streams from high-frequency inertial sensors and GPS data, the system robustly filters measurement noise and isolates sensor fault instances.
 
 ---
 
 📐 View Mathematical and System Modeling:
 
-The system tracks the aircraft's 2D position (x, y) and velocities (x_dot, y_dot) using a continuous-discrete state-space model:
+The system tracks the 3D aircraft position, velocity vector, and attitude orientations alongside dynamic gyroscope and accelerometer bias states:
 
-                           x_k = [x_k; x_dot_k; y_k; y_dot_k]
+                    x_k = [position_3D; velocity_3D; attitude_3D; biases_6D]
 
 1. Process Model (Time Update)
 
-                               x_k = A * x_k-1 + w_k-1
+                               x_k = f(x_k-1, u_k-1) + w_k-1
 
-Where A is the state transition matrix for a sampling time Delta_t, and w_k represents process noise.
+Where f(x) represents the non-linear rigid-body aircraft flight dynamics, and w_k represents the process noise covariance.
 
 2. Measurement Model (Measurement Update)
 
-                             z_k^i = H^i * x_k + v_k^i
+                                 z_k = h(x_k) + v_k
 
-Where H maps the true state space to the measurements, and v_k^i represents individual sensor noise.
+Where h(x) maps the state vectors to GPS and air-data measurements (including TAS and Angle of Attack), and v_k represents sensor noise.
 
 ---
 
 ## 💻 Code Architecture
 
-* target_tracking_kf.m: The core data fusion engine handling trajectory simulation, noise injection, and the recursive Kalman prediction/correction loops.
-* test_tracking_pipeline.m: An automated validation script that runs the tracking engine across varying noise profiles to verify convergence and calculate RMSE metrics.
+* flight_estimation_ekf.m: The core data fusion and state estimation engine handling 3D kinematic propagation, non-linear Jacobian evaluations, and recursive EKF corrections.
+* test_tracking_pipeline.m: An automated test harness script that loads flight datasets, evaluates dimensions, measures execution runtime, and validates state convergence.
 
 ## 📊 Key Results
 
-* Fusion Gain: Combining parallel sensor streams significantly lowered the estimation error covariance compared to single-sensor tracking runs.
-* Noise Dampening: Effectively filtered high-frequency Gaussian noise to recover smooth, accurate trajectories.
+* Sensor Bias Isolation: Successfully tracked and decoupled structural accelerometer and gyroscope biases from true flight dynamics.
+* Robustness to Faults: Maintained flight path state tracking accuracy even during simulated sensor fault anomalies.
 
 💡 Detailed Report: For full performance plots and coordinate transformations, see the included tracking_performance.pdf inside the folder.
