@@ -14,7 +14,7 @@ load('dataTask4.mat') %with both input measurement sensor and angle of attack se
 
 %Test your script, remember to change the function name according to your student ID (as on Blackboard)
 tic;
-[x_est,b_est,Ax_f_instance,Ay_f_instance,Az_f_instance,p_f_instance,q_f_instance,r_f_instance, AoA_f_instance] = SID230118278(c_k, d_k, t, dt);
+[x_est,b_est,Ax_f_instance,Ay_f_instance,Az_f_instance,p_f_instance,q_f_instance,r_f_instance, AoA_f_instance] = flight_estimation_ekf(c_k, d_k, t, dt);
 tc=toc;
 
 % Please make sure your code finishes running within 5 minutes. 
