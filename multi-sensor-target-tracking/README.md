@@ -1,18 +1,18 @@
-# 🛰️ Multi-Sensor Target Tracking Implementation
+# 🛰️ Multi-Sensor Flight State Estimation (EKF) Implementation
 
-This workspace contains the implementation scripts and analytical reporting for the centralized Kalman filtering target tracking system.
+This workspace contains the implementation scripts, automated testing harness, and sensor bias results for the non-linear 3D flight estimation module.
 
 ## 📋 File Inventory
 
-* target_tracking_kf.m: The primary execution engine. It generates the simulated 2D aircraft flight path, injects heavy Gaussian sensor noise across multiple independent tracking nodes, and recursively runs the time-prediction and measurement-correction loops.
-* test_tracking_pipeline.m: An automated validation and test harness that runs the tracking engine, evaluates filter stability across varying noise thresholds, and logs tracking convergence.
-* tracking_performance.pdf: The comprehensive assignment report detailing the kinematic state-space linearization, measurement matrix derivations, innovation sequence tests, and full graphical error analysis plots.
+* flight_estimation_ekf.m: The core state estimation engine. It implements an Extended Kalman Filter (EKF) to propagate 3D aircraft dynamics, evaluate non-linear system Jacobians, estimate sensor biases, and isolate data fault anomalies.
+* test_tracking_pipeline.m: The automated test and validation harness. It loads the flight data profiles, profiles execution script runtime, and checks for dimension formatting errors or NaN outputs.
+* Task4_Bias.png: Graphic output illustrating the tracking performance and stability of the accelerometer and gyroscope bias convergence loops under sensor fault configurations.
 
 ## 🚀 How to Run the Implementation
 
-1. Open MATLAB and set your current working directory to this folder.
-2. To run the automated validation suite and verify tracking performance, execute the test harness script in the command window:
-   
+1. Open MATLAB and point your current directory to this specific folder.
+2. To verify script dimensions, runtime limits, and basic function execution, run the automated validation test in the command window:
+
    run('test_tracking_pipeline.m')
 
-3. To view full coordinate frames, covariance convergence analysis, and localized fault detection systems, open the tracking_performance.pdf file directly.
+3. Ensure that your data file (e.g., dataTask4.mat) is present in your MATLAB path prior to execution.
