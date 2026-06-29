@@ -5,7 +5,6 @@ This module implements a **Centralized Multi-Sensor Data Fusion Architecture** u
 
 ---
 
-<details>
 ## 📐 Mathematical & System Modeling
 
 The system is framed as a continuous-discrete state-space model tracking the target's 2D position $(x, y)$ and velocities $(\dot{x}, \dot{y})$:
@@ -23,7 +22,7 @@ The centralized fusion node receives position coordinates from independent senso
 $$\mathbf{z}_{k}^{i} = \mathbf{H}^{i}\mathbf{x}_k + \mathbf{v}_{k}^{i}$$
 
 Where $\mathbf{H}$ maps the true state space to the measured coordinate space, and $\mathbf{v}_k^{i} \sim \mathcal{N}(0, \mathbf{R}^i)$ represents the unique sensor measurement noise covariance.
-</details>
+
 ---
 
 ## 💻 Code Architecture & Implementation
