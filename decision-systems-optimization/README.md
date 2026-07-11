@@ -8,12 +8,3 @@ This workspace documents an evolutionary computational design engine focused on 
 * parallel_tradeoffs.png: High-dimensional parallel coordinate trajectory plot showing the mapping between optimized controller gains and the system's performance boundaries.
 * hypervolume_convergence.png: Metrics convergence graph tracking optimization coverage and front stability over 50 generations.
 * criterion_correlations.png: Matrix scatter plot showing performance criteria trade-offs and structural parameter correlations post-optimization.
-
-## 🚀 How to Run the Implementation
-
-1. Open MATLAB and ensure the standard Evolutionary Algorithm Toolbox dependencies (`find_nd`, `find_prf`, `fshare`, `getFitness`) are added to your working path environment.
-2. Execute the primary decision support framework:
-
-   run('controller_optimization.m')
-
-3. The engine will run the generational optimization loops, analyze non-dominated Pareto sets, and dynamically render the final system parameter correlations, parallel performance paths, and hypervolume indicators.
