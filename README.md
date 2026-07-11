@@ -33,14 +33,30 @@ Where h(x) maps the state vectors to GPS and air-data measurements (including TA
 
 ---
 
+### 2. Multi-Objective Optimization and Decision Support Systems
+
+### 📌 Project Overview
+This module implements an evolutionary computational design engine focused on search optimization and multi-criterion decision analysis (MCDA). The system searches a high-dimensional parameter space to identify Pareto-optimal digital controller gains, systematically resolving engineering trade-offs between system performance criteria and control energy bounds based on stakeholder preferences.
+
+---
+
+📐 View Mathematical and Optimization Modeling:
+
+The system maps the vector of decision variables (controller gains) to a multi-dimensional objective function space:
+
+                          f(gains) = [J_1, J_2, J_3, J_4]^T
+
+Where the algorithm minimizes conflicting transient performance indexes and actuation costs simultaneously:
+
+             Minimize:  J_1 (Rise Time),  J_2 (Overshoot),  J_3 (Error),  J_4 (Control Effort)
+
+Subject to preferential boundaries defined by explicit performance goals:
+
+                                   J_i <= Goal_i
+
+---
+
 ## 💻 Code Architecture
 
-* flight_estimation_ekf.m: The core data fusion and state estimation engine handling 3D kinematic propagation, non-linear Jacobian evaluations, and recursive EKF corrections.
-* test_tracking_pipeline.m: An automated test harness script that loads flight datasets, evaluates dimensions, measures execution runtime, and validates state convergence.
-
-## 📊 Key Results
-
-* Sensor Bias Isolation: Successfully tracked and decoupled structural accelerometer and gyroscope biases from true flight dynamics.
-* Robustness to Faults: Maintained flight path state tracking accuracy even during simulated sensor fault anomalies.
-
-💡 Detailed Report: For full performance plots and coordinate transformations, see the included tracking_performance.pdf inside the folder.
+* 📁 01-multi-sensor-flight-estimation/: Core estimation engine handling 3D kinematic propagation, Jacobian evaluations, and recursive EKF noise filtering.
+* 📁 02-decision-systems-optimization/: Evolutionary multi-objective search scripts, trade-off analysis code, and hypervolume metric convergence tracking.
