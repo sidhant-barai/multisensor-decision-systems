@@ -58,5 +58,5 @@ Subject to preferential boundaries defined by explicit performance goals:
 
 ## 💻 Code Architecture
 
-* 📁 01-multi-sensor-flight-estimation/: Core estimation engine handling 3D kinematic propagation, Jacobian evaluations, and recursive EKF noise filtering.
+* 📁 01-multi-sensor-target-tracking/: Core estimation engine handling 3D kinematic propagation, Jacobian evaluations, and recursive EKF noise filtering.
 * 📁 02-decision-systems-optimization/: Evolutionary multi-objective search scripts, trade-off analysis code, and hypervolume metric convergence tracking.
