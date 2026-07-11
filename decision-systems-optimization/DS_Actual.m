@@ -1,5 +1,4 @@
 %% Copyrigth Sidhant Manoj Barai
-% Registration nUmber: 230118267
 
 
 clear all;
